@@ -1,17 +1,15 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import customerReducer from "../Features/customerSlice";
+import reservationReducer from "../Features/reservationSlice";
 
 export const store = configureStore({
+  // Here we will have our different slices
   reducer: {
-    counter: counterReducer,
+    reservations: reservationReducer,
+    customers: customerReducer,
   },
 });
 
-export type AppDispatch = typeof store.dispatch;
+// Dynamic return of store state and dispatch types
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppDispatch = typeof store.dispatch;
